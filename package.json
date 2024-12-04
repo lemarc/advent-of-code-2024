@@ -1,0 +1,15 @@
+{
+  "name": "advent-of-code-2024",
+  "version": "1.0.0",
+  "description": "Advent of Code 2024 solutions in JavaScript",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "day01": "node ./day01/index.js",
+    "day02": "node ./day02/index.js",
+    "day03": "node ./day03/index.js",
+    "day04": "node ./day04/index.js"
+  },
+  "author": "Marcus Jackson",
+  "license": "ISC"
+}
