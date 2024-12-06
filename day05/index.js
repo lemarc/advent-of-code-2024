@@ -2,7 +2,6 @@ import {processLines} from '../common.js'
 
 const DAY = 'day05'
 const sampleFile = './' + DAY + '/sample.txt'
-const sampleFile2 = './' + DAY + '/sample-2.txt'
 const inputFile = './' + DAY + '/input.txt'
 console.log('Advent of Code - ' + DAY + '\n')
 

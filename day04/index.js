@@ -14,8 +14,6 @@ function process(lines) {
 	for (const line of lines) {
 		map.push(line)
 	}
-	let x = 1
-	let y = 2
 
 	const yLength = map.length
 	const xLength = map[0].length
