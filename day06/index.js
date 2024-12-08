@@ -1,4 +1,4 @@
-import {processLines} from '../common.js'
+import {processLines, emptyMap, inBounds} from '../common.js'
 
 const DAY = 'day06'
 const sampleFile = './' + DAY + '/sample.txt'
@@ -79,18 +79,6 @@ function process(lines) {
 
 	console.log('Part 2')
 	console.log('Sum = ' + sum2 + '\n')
-}
-
-function emptyMap(xLength, yLength) {
-	const map = new Array(yLength)
-	for (let y = 0; y< yLength; y++) {
-		map[y] = new Array(xLength)
-	}
-	return map
-}
-
-function inBounds(x, y, xLength, yLength) {
-	return x >= 0 && x < xLength && y >=0 && y < yLength
 }
 
 function findLoop(dir, x, y, xLength, yLength, barriers, visited) {
