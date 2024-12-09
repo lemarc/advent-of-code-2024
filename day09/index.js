@@ -6,18 +6,16 @@ const inputFile = './' + DAY + '/input.txt'
 console.log('Advent of Code - ' + DAY + '\n')
 
 function process(lines) {
-	let sum1 = 0
-	let sum2 = 0
-
 	const line = lines[0]
 
-	const compact = new Uint8Array(line.length)
+	const compact = new Array(line.length)
 
 	for (let i = 0; i < line.length; i++) {
 		compact[i] = parseInt(line[i])
 	}
-	sum1 = fragment(compact)
-	sum2 = whole(compact)
+
+	const sum1 = fragment(compact)
+	const sum2 = whole(compact)
 
 	console.log('Part 1')
 	console.log('Sum = ' + sum1 + '\n')
@@ -83,22 +81,22 @@ function whole(compact) {
 	let s = 0
 	let file = true
 	let position = 0
-	let id = 0
 	for (const size of compact) {
 		if (file) {
-			files[f++] = {position: position, id: id++, size: size}
+			files[f++] = {position: position, size: size}
 		} else {
-			const ids = new Uint16Array(size)
-			spaces[s++] = {position: position, ids: ids, remaining: size}
+			spaces[s++] = {position: position, size: size, remaining: size}
 		}
 		position += size
 		file = !file
 	}
 
+	let sum = 0
+
 	let firstSpace = 0
 
-	for (f = files.length - 1; f > 0; f--) {
-		const file = files[f]
+	for (let id = files.length - 1; id > 0; id--) {
+		const file = files[id]
 
 		// find first empty space that will fit file
 		for (s = firstSpace; s < spaces.length; s++) {
@@ -108,33 +106,26 @@ function whole(compact) {
 
 			if (space.remaining >= file.size) {
 				for (let i = 0; i < file.size; i++) {
-					space.ids[space.ids.length - space.remaining +i] = file.id
+					sum += (space.position + space.size - space.remaining + i) * id
 				}
 				space.remaining -= file.size
-				files[f] = null
+				files[id] = null
 				break;
 			}
 		}
 
-		// update first with space
+		// move start of search to first empty block with space
 		while (spaces[firstSpace] && spaces[firstSpace].remaining == 0) {
 			firstSpace++
 		}
 	}
 
-	let sum = 0
-
-	for (const file of files) {
+	for (let id = 0; id < files.length; id++) {
+		const file = files[id]
 		if (file != null) {
 			for (let i = 0; i < file.size; i++) {
-				sum += (file.position + i) * file.id
+				sum += (file.position + i) * id
 			}
-		}
-	}
-
-	for (const space of spaces) {
-		for (let i = 0; i < space.ids.length; i++) {
-			sum += (space.position + i) * space.ids[i]
 		}
 	}
 
