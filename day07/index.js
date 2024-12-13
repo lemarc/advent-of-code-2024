@@ -20,7 +20,6 @@ function process(lines) {
 
 	for (const equation of equations) {
 		if (calc(equation.value, equation.numbers)) {
-
 			sum1 += equation.value
 		}
 
@@ -35,8 +34,6 @@ function process(lines) {
 
 	console.log('Part 2')
 	console.log('Sum = ' + sum2 + '\n')
-
-
 }
 
 function calc(goal, numbers, concat) {

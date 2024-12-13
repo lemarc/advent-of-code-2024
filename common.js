@@ -32,3 +32,7 @@ export function emptyMap(xLength, yLength) {
 export function inBounds(x, y, xLength, yLength) {
 	return x >= 0 && x < xLength && y >=0 && y < yLength
 }
+
+export function collinear(x1, y1, x2, y2, x3, y3) {
+	return (y1 - y2) * (x1 - x3) == (y1 - y3) * (x1 - x2);
+}
