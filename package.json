@@ -17,7 +17,8 @@
     "day10": "node ./day10/index.js",
     "day11": "node ./day11/index.js",
     "day12": "node ./day12/index.js",
-    "day13": "node ./day13/index.js"
+    "day13": "node ./day13/index.js",
+    "day14": "node ./day14/index.js"
   },
   "author": "Marcus Jackson",
   "license": "ISC"
