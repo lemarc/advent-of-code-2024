@@ -40,7 +40,7 @@ const instructions = [
 			register.B = (register.B ^ register.C)
 			return position+2
 		},
-		(register, operand, position, ouput)=>{
+		(register, operand, position, output)=>{
 			output.push(combo[operand](register) % 8)
 			return position+2
 		},
@@ -71,7 +71,6 @@ function process(lines) {
 
 		position = instructions[opcode](register, operand, position, output)
 	}
-
 
 	console.log('Part 1')
 	console.log(output.join(','))
